@@ -4,7 +4,18 @@ export interface Action {
   type: string;
 }
 
-export interface TodoAction extends Action {
+export interface Todo {
+  id: number;
+  list: number;
   text?: string | ReactNode;
-  id?: number;
+  completed?: boolean;
 }
+
+export interface List {
+  text: string;
+  id: number;
+}
+
+export interface TodoAction extends Action, Todo { }
+
+export interface ListAction extends Action, List { }
