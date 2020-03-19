@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const webpack = require('webpack');
@@ -24,7 +25,7 @@ module.exports = merge(common, {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
     alias: {
-      '~$': path.resolve(__dirname, '/src'),
+      '~': path.resolve(__dirname, '../src'),
     },
   },
 });

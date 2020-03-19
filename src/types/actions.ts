@@ -16,6 +16,11 @@ export interface List {
   id: number;
 }
 
+export interface State {
+  todos: Todo[];
+  lists: List[];
+}
+
 export interface TodoAction extends Action, Todo { }
 
 export interface ListAction extends Action, List { }
