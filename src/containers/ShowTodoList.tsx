@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { TodoList } from '~/components';
-import { State } from '~/types';
+import { State, Todo } from '~/types';
 
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: State): {todos: Todo []} => ({
   todos: state.todos,
 });
 
