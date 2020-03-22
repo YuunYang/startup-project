@@ -1,5 +1,6 @@
+import { List } from 'immutable';
 import { Todo } from './actions';
 
 export interface TodoList{
-  todos: Todo [];
+  todos: List<Todo>;
 }

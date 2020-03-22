@@ -1,0 +1,17 @@
+@import '~/variables.scss';
+
+.container{
+  position: relative;
+  display: flex;
+  height: 100%;
+  & .side-bar{
+    flex: 0 0 20%;
+    max-width: 20%;
+    text-align: left;
+    background-color: $listBackGroundColor;
+  }
+  & .content{
+    background-color: $black;
+    width: 100%;
+  }
+}

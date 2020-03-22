@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { List as ImList } from 'immutable';
 
 export interface Action {
   type: string;
@@ -13,14 +14,18 @@ export interface Todo {
 
 export interface List {
   text: string;
+  icon?: string;
   id: number;
 }
 
 export interface State {
-  todos: Todo[];
-  lists: List[];
+  current: List;
+  todos: ImList<Todo>;
+  lists: ImList<List>;
 }
 
 export interface TodoAction extends Action, Todo { }
 
 export interface ListAction extends Action, List { }
+
+export interface CurrentAction extends Action, List { }

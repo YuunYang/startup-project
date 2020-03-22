@@ -4,17 +4,17 @@ import { ADD_LIST, REMOVE_LIST } from '~/constants';
 
 const initLists = List();
 
-const lists = (state: List<ListType> = initLists, action: ListAction): ListType [] => {
+const lists = (state: List<ListType> = initLists, action: ListAction): List<ListType> => {
   switch (action.type) {
     case ADD_LIST:
       return state.push({
         id: action.id,
         text: action.text,
-      }).toJS();
+      });
     case REMOVE_LIST:
-      return state.filterNot((x: ListType) => x.id === action.id).toJS();
+      return state.filterNot((x: ListType) => x.id === action.id);
     default:
-      return state.toJS();
+      return state;
   }
 };
 

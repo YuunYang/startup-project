@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.(s)?css$/,
         use: [
           {
             loader: 'style-loader',
@@ -37,20 +37,28 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              },
               importLoaders: 1,
-              localIdentName: '[name]_[local]_[hash:base64]',
               sourceMap: true,
-              minimize: true,
             },
           },
+          {
+            loader: 'sass-loader',
+          },
         ],
+      },
+      {
+        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
+      favicon: path.resolve(__dirname, '../src/favicon.ico'),
       filename: './index.html',
     }),
   ],
