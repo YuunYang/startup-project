@@ -1,5 +1,5 @@
 import { List as ListType, CurrentAction } from '~/types';
-import { CHANGE_CURRENT } from '~/constants';
+import { TOGGLE_CURRENT } from '~/constants';
 
 const initCurrent = {
   text: '',
@@ -8,7 +8,7 @@ const initCurrent = {
 
 const current = (state: ListType = initCurrent, action: CurrentAction): ListType => {
   switch (action.type) {
-    case CHANGE_CURRENT:
+    case TOGGLE_CURRENT:
       return {
         id: action.id,
         text: action.text,

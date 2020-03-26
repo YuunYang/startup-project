@@ -5,4 +5,5 @@ export interface ListProps {
   lists: ImList<ListTypes>;
   todoCount?: number;
   addList: (id: number, text: string) => void;
+  toggleCurrent: (id: number, text: string) => void;
 }

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import {
-  ADD_TODO, REMOVE_TODO, TOGGLE_TODO, ADD_LIST,
+  ADD_TODO, REMOVE_TODO, TOGGLE_TODO, ADD_LIST, TOGGLE_CURRENT,
 } from '~/constants';
-import { TodoAction, ListAction } from '~/types';
+import { TodoAction, ListAction, CurrentAction } from '~/types';
 
 export const addTodo = (
   text: string | ReactNode,
@@ -29,6 +29,12 @@ export const toggleTodo = (id: number, list: number): TodoAction => ({
 
 export const addList = (id: number, text: string): ListAction => ({
   type: ADD_LIST,
+  id,
+  text,
+});
+
+export const toggleCurrent = (id: number, text: string): CurrentAction => ({
+  type: TOGGLE_CURRENT,
   id,
   text,
 });

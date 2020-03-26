@@ -9,7 +9,9 @@ import { ListProps, List as ListType } from '~/types';
 import styles from './index.scss';
 
 const List = (props: ListProps): ReactElement => {
-  const { lists, todoCount, addList } = props;
+  const {
+    lists, todoCount, addList, toggleCurrent,
+  } = props;
   const [selected, setSelected] = useState(0);
   const [newListId, setNewListId] = useState(1);
   const [newListName, setNewListName] = useState('');
@@ -17,8 +19,9 @@ const List = (props: ListProps): ReactElement => {
     const id: number = missMinNum(lists.map((l) => l.id).toJS());
     setNewListId(id);
   }, [newListName]);
-  const handleListClick = (id: number): void => {
+  const handleListClick = (id: number, li: ListType): void => {
     setSelected(id);
+    toggleCurrent(li.id, li.text);
   };
   const handleNewListChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setNewListName(e.target.value);
@@ -33,7 +36,7 @@ const List = (props: ListProps): ReactElement => {
       {lists.map((li: ListType, index: number) => (
         <button
           type="button"
-          onClick={(): void => handleListClick(index)}
+          onClick={(): void => handleListClick(index, li)}
           className={cls(styles['list-item'], {
             [styles.selected]: selected === index,
           })}

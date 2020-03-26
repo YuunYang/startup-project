@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { List as ImList } from 'immutable';
 import { List } from '~/components';
-import { addList } from '~/actions';
+import { addList, toggleCurrent } from '~/actions';
 import { State, List as ListProps } from '~/types';
 
 interface Props{
@@ -11,6 +11,7 @@ interface Props{
 
 interface Func{
   addList: (id: number, text: string) => void;
+  toggleCurrent: (id: number, text: string) => void;
 }
 
 const mapStateToProps = (state: State): Props => ({
@@ -20,6 +21,9 @@ const mapStateToProps = (state: State): Props => ({
 const mapDispatchToProps = (dispatch: Dispatch): Func => ({
   addList: (id: number, text: string): void => {
     dispatch(addList(id, text));
+  },
+  toggleCurrent: (id: number, text: string): void => {
+    dispatch(toggleCurrent(id, text));
   },
 });
 
